@@ -52,12 +52,13 @@ export default class App extends Component {
     this.togleProperty = (arr, id, propName) => {
       const idx = arr.findIndex((el) => el.id === id);
       const oldItem = arr[idx];
-      const newItem = { ...oldItem, [propName]: !oldItem[propName] };
-      const newArray = [...arr.slice(0, idx), newItem, ...arr.slice(idx + 1)];
-
-      return {
-        todoData: newArray,
-      };
+      const newItem = { ...oldItem, [propName]: !oldItem[propName]};
+      
+      return [
+        ...arr.slice(0, idx),
+        newItem,
+        ...arr.slice(idx +1)
+      ];
     };
     this.onTogleImportant = (id) => {
       this.setState(({ todoData }) => {
